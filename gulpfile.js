@@ -1,12 +1,10 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
-var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 var cache = require('gulp-cache');
 var cp = require('child_process');
-var gcmq = require('gulp-group-css-media-queries');
-var cleanCSS = require('gulp-clean-css');
 var browserSync = require('browser-sync');
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
@@ -34,53 +32,35 @@ gulp.task('browser-sync', ['sass', 'img', 'jekyll-build'], function() {
 
 // Compile files
 gulp.task('sass', function () {
-    return gulp.src('_sass/main.scss')
+    return gulp.src('assets/css/scss/main.scss')
         .pipe(sass({
             outputStyle: 'expanded',
             onError: browserSync.notify
         }))
-        .pipe(gcmq())
-        .pipe(prefix(['last 15 versions', '> 1%'], { cascade: true }))
-        // .pipe(cleanCSS({
-        //     level: 2
-        // }))
-        .pipe(gulp.dest('_site/css'))
+        .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+        .pipe(gulp.dest('_site/assets/css'))
         .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest('css'));
-});
-
-// Js
-gulp.task('js', function() {
-    return gulp.src('js/*.js')
-        .pipe(gulp.dest('_site/js'))
-        .pipe(browserSync.reload({stream:true}));        
+        .pipe(gulp.dest('assets/css'));
 });
 
 // Compression images
 gulp.task('img', function() {
-	return gulp.src('images/**/*')
-	// .pipe(cache(imagemin()))
-	.pipe(gulp.dest('_site/images'))
+	return gulp.src('assets/img/**/*')
+		.pipe(cache(imagemin({
+			interlaced: true,
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		})))
+    .pipe(gulp.dest('_site/assets/img'))
     .pipe(browserSync.reload({stream:true}));
 });
 
-// Build Minify CSS
-gulp.task('mincss', function() {
-    return gulp.src('css/main.css')
-        .pipe(rename({suffix: '.min', prefix : ''}))
-        .pipe(cleanCSS({
-          level: 2
-        }))
-        .pipe(gulp.dest('_site/css'))
-        .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest('css'));
-});
-
-// Watch html, scss, js, img files
+// Watch scss, html, img files
 gulp.task('watch', function () {
-    gulp.watch('_sass/**/*.scss', ['sass']);
-    gulp.watch('js/*.js', ['jekyll-rebuild']);
-    gulp.watch('images/**/*', ['img']);
+    gulp.watch('assets/css/scss/**/*.scss', ['sass']);
+    gulp.watch('assets/js/**/*.js', ['jekyll-rebuild']);
+    gulp.watch('assets/img/**/*', ['img']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html', '_pages/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
 

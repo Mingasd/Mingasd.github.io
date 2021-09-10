@@ -1,62 +1,37 @@
-# Site settings
-title: Magenta
-description: a normal blog for life
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://lokmont-jekyll.netlify.com/" # the base hostname & protocol for your site, e.g. http://example.com
+title: Hello, world! I'm David Freeman
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "/flexible-jekyll" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: #if your site has a twitter account, enter it here
 
-# Banner Section
-hero: 112.jpg
-hero-title: Welcome
-hero-description: A normal blog
+# Author Settings
+author: David Freeman # add your name
+author-img: david-freeman.jpg # add your photo
+about-author: I am a web developer focusing on front-end development. Always hungry to keep learning. # add description
+social-twitter: # add your Twitter handle
+social-facebook: # add your Facebook handle
+social-github: artemsheludko # add your Github handle
+social-linkedin: # add your Linkedin handle
+social-email: # add your Email address
 
-# Author - Creator
-author-name: Magenta
-author-image: 10.jpg
-about-author: A normal person
-author-email: 1576514162@qq.com
+# Disqus
+discus-identifier: mr-brown # add your discus identifier
 
-# Social Media Links (Links are located in hero and footer)
-twitter: https://twitter.com/
-facebook: https://facebook.com/
-google-plus: https://plus.google.com/
-instagram: https://www.instagram.com/
-pinterest: https://pinterest.com/
-youtube: https://www.youtube.com/
+# Tracker
+analytics: # Google Analytics
 
-# Contact Form Settings
-contact-subtitle: Pok pok listicle meggings, gluten-free deep v you probably haven't heard of them taxidermy iPhone gentrify seitan. Kogi cornhole enamel. # Title for the subscription form.
-
-# Google Analytics
-google-analytics: # Add your identifier. For example UA-99631805-1.
-
-# Newsletter
-mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
-
-# Comment Section (Disqus)
-disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
-
-# Build settings
+# Build Settings
 markdown: kramdown
-permalink: pretty
-paginate: 9
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
 paginate_path: "/page/:num"
 
-# Pages path
-defaults:
-  - scope:
-      path: '_pages'
-    values:
-      permalink: /:basename:output_ext
-
-plugins:
-  - jekyll-paginate
-  - jekyll-feed
-
-include:
-  - _pages
-
-# Exclude from processing.
-exclude:
- - Gemfile
- - Gemfile.lock
- - vendor
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
