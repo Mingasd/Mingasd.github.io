@@ -1,36 +1,30 @@
-<header class="header">
+<header class="site-header clearfix">
+  <div class="wrapper-content">
 
-  <div class="header_content">
-    <label class="theme_changer">
-      <input theme_toggle type="checkbox">
-      <div class="button"></div>
-    </label>
-    <a class="header_circle" href="{{ '/' | relative_url }}">
-      <img src="{{ site.user.pic | relative_url }}" alt="{{ site.user.picAlt }}">
-    </a>
-    <span class="header_name">{{ site.user.name }}</span>
-    <span class="header_job">{{ site.user.job }}</span>
-    <span class="header_mes">{{ site.user.message }}</span>
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
 
-    <nav class="nav">
-      {% if site.user.aboutme %}
-      <ul class="nav_list">
-        <li class="nav_item">
-          <a href="{{ site.baseurl }}/aboutme.html">about</a>
-        </li>
-      </ul>
-      {% endif %}
-      {% for category in site.categories %}
-      {% capture cat_name %}{{ category | first }}{% endcapture %}
-      <ul class="nav_list">
-        <li class="nav_item">
-          <a href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
-            ({{ category | last | size }})</a>
-        </li>
-      </ul>
-      {% endfor %}
-    </nav>
+      <nav class="site-nav">
+        {% for page in site.pages %}
+          {% unless page.name == 'tags.html' or page.name == '404.html' %}
+            {% if page.title %}
+              <a href='{{ page.url | prepend: site.baseurl }}'>{{ page.title }}</a>
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+      </nav>
+
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    </div>
+    
   </div>
-
-</header>
-
+</header> <!-- /.site-header -->

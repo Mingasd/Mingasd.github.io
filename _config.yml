@@ -1,49 +1,62 @@
+# Site settings
+title: Lokmont
+description: Lokmont is a responsive simple theme for Jekyll.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://lokmont-jekyll.netlify.com/" # the base hostname & protocol for your site, e.g. http://example.com
 
-title: Catbook #Your awesome title
-email: #youremail@domain.com
-description: > # this means to ignore newlines until "baseurl"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+# Banner Section
+hero: 112.jpg
+hero-title: Welcome
+hero-description: A normal blog
 
-baseurl: # the subpath of the site
-url: http://starry99.github.io/catbook # the base hostname & protocol for your site
+# Author - Creator
+author-name: Magenta
+author-image: 10.jpg
+about-author: A normal person
+author-email: 1576514162@qq.com
 
-permalink: /:year-:month/:title
-timezone:
+# Social Media Links (Links are located in hero and footer)
+twitter: https://twitter.com/
+facebook: https://facebook.com/
+google-plus: https://plus.google.com/
+instagram: https://www.instagram.com/
+pinterest: https://pinterest.com/
+youtube: https://www.youtube.com/
 
-favicon: /assets/img/favicon.ico
+# Contact Form Settings
+contact-subtitle: Pok pok listicle meggings, gluten-free deep v you probably haven't heard of them taxidermy iPhone gentrify seitan. Kogi cornhole enamel. # Title for the subscription form.
 
-google_analytics: #UA—XXXXXXXX-X
-disqus_shortname: #disqus shortname
-cusdis:
-    app_id: #your cusdis app_id
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
 
-user:
-  name: Magenta
-  pic: /assets/img/cat.jpg
-  picAlt: "magenta"
-  job: Student
-  aboutme: true # comment this out if you don't need the 'about' page.
+# Newsletter
+mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
-exclude:
-  - README.md
-  - LICENSE
-  - github
+# Comment Section (Disqus)
+disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
 
+# Build settings
+markdown: kramdown
+permalink: pretty
+paginate: 9
+paginate_path: "/page/:num"
+
+# Pages path
 defaults:
   - scope:
-      path: "_posts"
-      type: posts
+      path: '_pages'
     values:
-      layout: post
-      comment: true   
+      permalink: /:basename:output_ext
 
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-markdown: kramdown 
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
 
-# Filtering Content
-show_drafts: null
-limit_posts: 0
-future:      false
-unpublished: false
+include:
+  - _pages
+
+# Exclude from processing.
+exclude:
+ - Gemfile
+ - Gemfile.lock
+ - vendor
