@@ -20,10 +20,10 @@ cusdis:
     app_id: #your cusdis app_id
 
 user:
-  name: Catbook
+  name: Magenta
   pic: /assets/img/cat.jpg
-  picAlt: "catbook"
-  job: a category-centric theme
+  picAlt: "magenta"
+  job: Student
   aboutme: true # comment this out if you don't need the 'about' page.
 
 exclude:
