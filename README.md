@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+# Catbook
+CATbook is a CATegory-centric Jekyll theme for bloggers. There is a switch button to toggle between dark mode and light mode. This theme is originally inspired from [Book](https://github.com/kkninjae/book).
 
-You can use the [editor on GitHub](https://github.com/Mingasd/Mingasd.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GENERATOR](https://img.shields.io/badge/made_with-jekyll-blue.svg) ![VERSION](https://img.shields.io/badge/current_version-1.0-green.svg)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Demo:** https://starry99.github.io/catbook/
 
-### Markdown
+![SCREENSHOT](https://starry99.github.io/catbook/assets/img/lmode.jpg)
+![SCREENSHOT](https://starry99.github.io/catbook/assets/img/dmode.jpg)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Setup
 
-```markdown
-Syntax highlighted code block
+```sh
+$ git clone https://github.com/starry99/catbook
+$ jekyll serve
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# Now you can start customization!
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Make it yours
 
-### Jekyll Themes
+If you want to create a new category, you need to create `*name*.html` in the `categories` folder. And add the following content:
+```html
+---
+layout: page
+type: *name*
+---
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Mingasd/Mingasd.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+{% include archive.html %}
+```
+Then the number of pages in the category will be displayed.
 
-### Support or Contact
+## License
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[MIT License](https://opensource.org/licenses/MIT)
