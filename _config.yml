@@ -1,6 +1,6 @@
 # Site settings
-title: Lokmont
-description: Lokmont is a responsive simple theme for Jekyll.
+title: Magenta
+description: a normal blog for life
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lokmont-jekyll.netlify.com/" # the base hostname & protocol for your site, e.g. http://example.com
 
