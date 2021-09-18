@@ -1,24 +1,46 @@
-<!DOCTYPE html>
-<html>
+---
+layout: compress
+---
+<html lang="{{ page.lang | default: site.lang | default: "en_US" }}">
 
   {% include head.html %}
 
-  <body>
+  <body class="site">
+
+    {% if site.google_tag_manager %}
+
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager }}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+    {% endif %}
 
     {% include header.html %}
 
-    <!-- content start -->
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
+    <div class="hero lazyload" data-bg="{{site.url}}/assets/img/posts/sleek_lg.jpg">
+      <div class="hero__wrap">
+        <h1 class="hero__title">Magenta</h1>
+        <p class="hero__meta">相见时难别亦难 东风无力百花残</p>
       </div>
     </div>
 
-    <!-- content end -->
+    <main class="site__content">
+      <section class="blog">
+        <div class="container">
+          <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
+
+            {% for post in site.posts %}
+              {% include card.html %}
+            {% endfor %}
+
+            <!-- {% include pagination.html %} -->
+          </div>
+        </div>
+      </section>
+    </main>
 
     {% include footer.html %}
-    {% include javascripts.html %}
 
   </body>
 

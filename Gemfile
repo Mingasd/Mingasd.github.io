@@ -1,6 +1,4 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-# 'github-pages' includes 'jekyll' gem 
-gem 'github-pages'
-gem 'bourbon'
-gem 'jemoji'
+source "https://rubygems.org"
+gemspec

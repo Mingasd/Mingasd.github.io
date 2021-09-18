@@ -1,46 +1,36 @@
 <head>
   <meta charset="utf-8">
-  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}" />
+  {% seo %}
 
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  {% if site.twitter_handle %}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="{{ site.twitter_handle }}" />
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-    <meta name="twitter:image" content="{{ site.logo | prepend: site.baseurl | prepend: site.url }}" />
-    {% if page.excerpt %}
-    <meta name="twitter:description"  content="{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}" />
-    {% elsif site.description %}
-    <meta name="twitter:description" content="{{ site.description | strip_html | strip_newlines | truncate: 200 }}" />
-    {% endif %}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/icons/apple-touch-icon.png?v=qA3OXqyw77' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{'/assets/img/icons/favicon-32x32.png?v=qA3OXqyw77' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{'/assets/img/icons/favicon-16x16.png?v=qA3OXqyw77' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/img/icons/manifest.json?v=qA3OXqyw77' | relative_url }}">
+  <link rel="mask-icon" href="{{ '/assets/img/icons/safari-pinned-tab.svg?v=qA3OXqyw77' | relative_url }}" color="#5bbad5">
+  <!--[if IE]><link rel="shortcut icon" href="/assets/img/icons/favicon.ico?v=qA3OXqyw77"><![endif]-->
+  <link rel="shortcut icon" href="{{ '/assets/img/icons/favicon.ico?v=qA3OXqyw77' | relative_url }}">
+  <meta name="apple-mobile-web-app-title" content="Sleek">
+  <meta name="application-name" content="Sleek">
+  <meta name="msapplication-config" content="{{ '/assets/img/icons/browserconfig.xml?v=qA3OXqyw77' | relative_url }}">
+  <meta name="theme-color" content="#ffffff">
+
+  {% if site.google_tag_manager %}
+
+    {% include gtm.html %}
+
   {% endif %}
-  
-  <meta property="og:site_name" content="{{ site.title }}" />
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
-  {% if page.excerpt %}
-  <meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}" />
-  {% elsif site.description %}
-  <meta property="og:description" content="{{ site.description | strip_html | strip_newlines | truncate: 200 }}" />
-  {% endif %}
-  <meta property="og:image" content="{% if page.image %}{{ page.image | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.logo | prepend: site.baseurl | prepend: site.url }}{% endif %}" />
-  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" >
-  <meta property="og:type" content="blog" />
-  {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"/>
-  <link rel="shortcut icon" href="{{ "/assets/images/favicon.png" | prepend: site.baseurl }}" type="image/png"/>
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <style class="inlineCSS">
 
-  <link rel="stylesheet" type="text/css" media="screen" href="{{ "/css/main.css"  | prepend: site.baseurl  }}" />
-  <link rel="stylesheet" type="text/css" media="print" href="{{ "/css/print.css"  | prepend: site.baseurl  }}" />
+    {% include critical.css %}
+
+  </style>
+  <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"></noscript>
+  <script type="text/javascript">
+   {% include loadCss.js %}
+  </script>
 </head>
