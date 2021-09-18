@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+
 ---
 
 <center>朴算子 咏梅</center>
@@ -13,3 +14,4 @@ permalink: /about/
 <center>无意苦争春，一任群芳妒。</center>
 
 <center>零落成泥碾作尘，只有香如故。</center>
+
