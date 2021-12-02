@@ -1,13 +1,12 @@
 <footer class="c-page__footer">
 	</hr>
+	<p>&copy; {{ site.author }} {{ 'now' | date: '%Y' }} </p>
 	<p>
 	{% include fortune.html %}
 	</p>
 	{% if page.layout != 'amp' %}
 	</hr></br>
 	{% endif %}
-	</br>
-	<p>&copy; {{ site.author }} {{ 'now' | date: '%Y' }} </p>
 	{% if page.layout != 'amp' %}
 	</br>
 	{% endif %}
