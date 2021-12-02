@@ -1,31 +1,15 @@
-# Flexible-Jekyll is a simple and clean theme for Jekyll
+# Biu-Jekyll-Theme
 
-![](https://github.com/artemsheludko/flexible-jekyll/blob/master/assets/img/promo-img.jpg?raw=true)
+It is a Jekyll theme based on [butane-jekyll-theme](https://github.com/alexcarpenter/butane-jekyll-theme) by @alexcarpenter
 
-## Demo
+## Getting Started
+1. `git clone https://github.com/RedL0tus/Biu-Jekyll-Theme.git`
+2. `cd Biu-Jekyll-Theme`
+3. `rm -rf CHANGELOG.md README.md`
+4. `jekyll serve`
 
-Check the theme in action [Demo](https://artemsheludko.github.io/flexible-jekyll/)
+## Sites using Butane Jekyll Theme
+- [v2bv.win](https://v2bv.win)
 
-The main page would look like this:
-
-![Main page preview](https://github.com/artemsheludko/flexible-jekyll/blob/master/assets/img/home-page.jpg?raw=true)
-
-The post page would look like this:
-
-![Post page preview](https://github.com/artemsheludko/flexible-jekyll/blob/master/assets/img/post-example.jpg?raw=true)
-
-## Features
-
-- [Google Fonts](https://fonts.google.com/)
-- [Font Awesome](http://fontawesome.io/)
-- [Disqus](https://disqus.com/)
-- [Analytics](https://analytics.google.com/analytics/web/)
-- Support Emoji
-
-## Installation:
-
-Fork the ``master`` branch and follow the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
-
-## License
-
-GNU General Public License v3.0
+## Screenshot:
+![Screenshot1](https://img.vim-cn.com/0b/dbf27e6ce44cf17afe049e5420a883bedf53c0.jpg)
