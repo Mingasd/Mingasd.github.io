@@ -1,13 +1,7 @@
 # Site settings
-title: Your site
-description: >
-    Your description
-author: Your name
-email: your@e.mail
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://yourname.github.io" # the base hostname & protocol for your site
-twitter_username: YourTwitter
-github_username:  YourGitHub
+title: MagentaのBlog
+author: Magenta
+
 
 disqus_shortname: YourDisqusShortname
 
