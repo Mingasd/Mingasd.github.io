@@ -1,25 +1,25 @@
-# Site settings
-title: MagentaのBlog
-author: Magenta
+# # # # # # # #
+#   K i k o   #
+# # # # # # # #
 
+# Basic
+name:               "Magenta"
+description:        "嘴里塞满糖果"
 
-disqus_shortname: YourDisqusShortname
-
-# Build settings
-include: [_pages]
-markdown: kramdown
-permalink: /:year/:month/:title
-sass:
-    style: compressed
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
 
 gems:
-  - jemoji
-  - jekyll-sitemap
-# - amp-jekyll # Acceletrated Mobile Pages
-
-# AMP Settings
-# ampdir: amp/
-# enable_amp: true
-
-# Google Analytics
-# google_analytics: UA-XXXXXXXX-X
+  - jekyll-seo-tag

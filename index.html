@@ -1,28 +1,33 @@
 ---
-layout: page
-title: Home
+layout: default
 ---
-<section class="c-archives">
-{% for post in site.posts  %}
-    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-
-    {% if forloop.first %}
-        <h2 class="c-archives__year" id="{{ this_year }}-ref">{{this_year}}</h2>
-        <ul class="c-archives__list">
-    {% endif %}
-        <li class="c-archives__item">
-            <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-            <p>{{ post.date | date: "%b %-d, %Y" }}</p>
-        </li>
-    {% if forloop.last %}
-        </ul>
-    {% else %}
-        {% if this_year != next_year %}
-        </ul>
-        <h2 class="c-archives__year" id="{{ next_year }}-ref">{{next_year}}</h2>
-        <ul class="c-archives__list">
-        {% endif %}
-    {% endif %}
+<header class="masthead">
+  <h1 class="masthead-title">
+    <a href="{{ site.baseurl }}/">{{ site.name }}<span>&#39;s blog</span></a>
+  </h1>
+  <nav class="masthead-nav">
+    {% for nav in site.nav %}
+      {% if nav.remote %}
+      <a href="{{ nav.href }}">{{ nav.name }}</a>
+      {% else %}
+      <a href="{{ site.baseurl }}/{{ nav.localpath }}">{{ nav.name }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+</header>
+<div class="content list">
+{% if site.posts.size == 0 %}
+  <h2>No post found</h2>
+{% else %}
+{% for post in site.posts %}
+  <div class="list-item">
+    <h2 class="list-post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <div class="list-post-date">
+      <time>{{ post.date | date_to_string }}</time>
+    </div>
+  </div>
 {% endfor %}
-</section>
+{% endif %}
+</div>
