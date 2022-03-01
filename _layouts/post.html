@@ -1,86 +1,42 @@
 ---
 layout: default
 ---
-
-<article class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <div class="post-meta">
-    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ page.date | date_to_string }}
-    </time>
-    {%- if page.last_modified_at -%}
-      <span> ~ </span>
-      {%- assign mdate = page.last_modified_at | date_to_xmlschema -%}
-      <time datetime="{{ mdate }}" itemprop="dateModified">
-        {{ mdate | date_to_string }}
-      </time>
-    {%- endif -%}
-    {%- if page.author -%}
-      <span> • </span>
-      {% for author in page.author %}
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          {{ author }}
-        </span>
-        {%- if forloop.last == false %}, {% endif -%}
-      {% endfor %}
-    {%- endif -%}
-    {% if page.categories.size > 0 %}
-      <span> • </span>
-      <span class="post-categories-section">
-        <i class="post-categories-icon fas fa-folder"></i>
-        <ul class="post-categories">
-          {%- for category in page.categories -%}
-            <li>
-              {% assign slugified_category = category | slugify %}
-              {%- if site.categories_path -%}
-                <a class="post-category" href="{{ site.categories_path | relative_url }}#{{ slugified_category }}">{{ category }}</a>
-              {%- else -%}
-                <span class="post-category">{{ category }}</span>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      </span>
-    {% endif %}
-    {% if page.tags.size > 0 %}
-      <span> • </span>
-      <span class="post-tags-section">
-        <i class="post-tags-icon fas fa-tag"></i>
-        <ul class="post-tags">
-          {%- for tag in page.tags -%}
-            <li>
-              {% assign slugified_tag = tag | slugify %}
-              {%- if site.tags_path -%}
-                <a class="post-tag" href="{{ site.tags_path | relative_url }}#{{ slugified_tag }}">{{ slugified_tag }}</a>
-              {%- else -%}
-                <span class="post-tag">{{ slugified_tag }}</span>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      </span>
-    {% endif %}
+{%- include header.html -%}
+<main class="post__wrapper">
+  {%- include header_nav.html -%}
+  <div class="post__top_navs clearfix">
+    <nav class="post__archive_path">
+      {%- assign blog_page_path = site.theme_setting.blog_page | default: "index.md" %}
+      {%- assign blog_page = site.pages | where: "path", blog_page_path | first -%}
+      <a href="{{ blog_page.url | relative_url }}" id="archiveBtn">
+        <div class="post__archive_icon">
+          <svg width="40" height="40">
+            <circle class="circle-progress" r="18" cy="20" cx="20"  stroke-linejoin="round" stroke-linecap="round" />
+          </svg>
+          <span class="post__archive_icon"></span>
+        </div>
+        {{ site.theme_setting.lang.blog_title | default: site.title }}
+      </a>
+    </nav>
   </div>
-
-  {{ content }}
-
-  {% if jekyll.environment == "production" and site.disqus and page.comments != false %}
-    {% include disqus.html %}
-  {% endif %}
-</article>
-
-{% if site.related_posts != empty %}
-  <aside class="related">
-    <h2 class="related-title">Related posts</h2>
-    <ul class="related-posts">
-      {% for post in site.related_posts limit:3 %}
-        <li>
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-          <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
-        </li>
-      {% endfor %}
-    </ul>
-  </aside>
-{% endif %}
+  <article class="post">
+    <header class="post__header">
+      <h1 class="post__title">{{ page.title | escape }}</h1>
+      <div class="post__meta">
+        <time>{{ page.date | date: "%Y-%m-%d %H:%M" }}</time>
+      </div>
+    </header>
+    <div class="post__content content">
+      {{ content | toc | img_prefix }}
+    </div>
+  </article>
+  {%- if site.comment.enabled -%}
+  {% include comments.html -%}
+  {%- else -%}
+  {% include contact.html -%}
+  {%- endif -%}
+</main>
+{%- if site.theme_setting.code or page.code -%}
+  <script>hljs.initHighlightingOnLoad();</script>
+{%- endif -%}
+{%- include footer.html -%}
