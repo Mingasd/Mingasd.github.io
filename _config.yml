@@ -1,47 +1,34 @@
-plugins: [jekyll-paginate]
+# Site settings
+title: Magenta Blog
+# email: lixizhi@yeah.net
+description: Magenta's Blogs
+# > # this means to ignore newlines until "baseurl:"
+#   Write an awesome description for your new site here. You can edit this
+#   line in _config.yml. It will appear in your document head meta (for
+#   Google search results) and in your feed.xml site description.
 
-permalink: /:categories/:title/
+# baseurl: "" # the subpath of your site, e.g. /blog/
+# url: "http://yourdomain.com" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username: Magenta
+permalink: /:year/:month/:day/:title/
+# # this is the url root of the view source link on the footer page.
+# viewsourceroot: https://github.com/LiXizhi/LiXizhi.github.io/blob/master/
+# # this is the url root of the create page link on the footer page.
+# newsourceroot: https://github.com/LiXizhi/LiXizhi.github.io/new/master
+#########################################
+# for duoshuo.com commenting system, uncomment following line if you do not want to include duoshuo.com. 
+#duoshuo_shortname: lixizhi
+#duoshuo_url: "http://lixizhi.github.io"
+# disqus.com commenting system. please note that it is exclusive with duoshuo.com
+disqus_shortname: lixizhi
+disqus_url: "http://lixizhi.github.io"
+#########################################
 
-highlighter: rouge
+# Build settings
 markdown: kramdown
-kramdown:
-  input:  GFM
-  syntax_highlighter: rouge
 
-
-paginate: 10
-paginate_path: "page/:num"
-baseurl: ""
-
-
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      styles : [highlight.css,post.css]
-      scripts : [post.js]
-
-
-
-title: "Magenta"
-description: ""
-github:
-  username: magenta
-swiftype:
-  searchId: iXZyPokVfxFaBTvi64Y6
-comment:
-    repo: blog
-    client_id: a6fb73b3e790e234bab8
-    client_secret: cc10aaff53a03d05ab2ee002dbf401dd7627c7a3
-
-url: "https://mingasd.github.io/blog"
-# imgrepo: "https://bit-ranger.github.io/blog/static/img"
-
-
-#url: "http://127.0.0.1:4000"
-#imgrepo: "http://127.0.0.1:4000/static/img"
-
+# highlight
+# highlighter: pygments
+# highlighter: rouge
+# highlighter: false
