@@ -1,3 +1,30 @@
 <footer class="site-footer">
-  © {{ site.time | date: "%Y" }}<a href="{{ "/" | relative_url }}">{{ site.title }}</a>. Theme<a href="https://github.com/erlzhang/jekyll-theme-persephone" target="_blank">Persephone</a>
+
+  <div class="wrapper">
+
+    <center>
+        
+		<p><a class="link" href="{{ site.baseurl }}/archive/">Archive</a> /
+		<a class="link" href="{{ site.baseurl }}/category/">Category</a> / 
+		<a class="link" href="{{ site.baseurl }}/tags/">Tags</a> / 
+		<a class="link" href="{{ site.baseurl }}/about/">About</a> /
+		<a class="link" href="{{ site.baseurl }}/contact/">Contact</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+        
+		<a class="link" href="{{ site.baseurl }}">{{ site.name }}</a>
+		<br>
+		<span>Theme &copy; <a class="link" href="https://gabriel-chen.github.io" target="_blank"> Gabriel</a> | </span>
+				<iframe
+			style="margin-left: 2px; margin-bottom:-5px;"
+			frameborder="0" scrolling="0" width="91px" height="20px"
+			src="https://ghbtns.com/github-btn.html?user=itisbenjamin&repo=Nice_Blog&type=star&count=true" >
+		</iframe>
+
+    </center>
+    
+  </div>
+
 </footer>
