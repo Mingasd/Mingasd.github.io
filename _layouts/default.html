@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      
+
   {% include head.html %}
 
-  {% if site.google-analytics %}
-  {% include google-analytics.html %}
-  {% endif %}
-
-  {% if page.url == "/404.html" %}
-  <meta http-equiv="refresh" content="10; url={{ site.baseurl }}">
-  {% endif %}
-
-  </head>
-
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
   <body>
 
-  {% include header.html %}
+    {% include header.html %}
 
-  <div class="wrapper">
-        {{ content }}
-  </div>
+    <div id="main" class="container main">
+      {{ content }}
+    </div>
 
-</body>
-
-<foot>
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="back to top">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
 
     {% include footer.html %}
-    {% include foot.html %}
 
-</foot>
-
+    {% include newpost.html %}
+  
+  </body>
 </html>
