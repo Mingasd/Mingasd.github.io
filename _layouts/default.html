@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-  <div class="content-container">
+<html lang="{{ site.locale | default: 'en' }}">
+  {%- include head.html -%}
+  <body class="body-{{ page.layout }}">
     {{ content }}
-
-    {% include footer.html %}
-  </div>
-</body>
+  </body>
 </html>
