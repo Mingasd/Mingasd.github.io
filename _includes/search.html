@@ -1,18 +1,20 @@
-<!-- Search -->
-<div class="search-page">
-  <div class="search-icon-close-container">
-    <span class="search-icon-close">
-      <i class="fa fa-chevron-down"></i>
-    </span>
-  </div>
-  <div class="search-main container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <form></form>
-        <input type="text" id="search-input" placeholder="$ grep...">
-        </form>
-        <div id="search-results" class="mini-post-list"></div>
-      </div>
-    </div>
-  </div>
-</div>
+{%- include snippets/get-locale-string.html key='CANCEL' -%}
+{%- assign _locale_cancel = __return -%}
+{%- include snippets/get-locale-string.html key='SEARCH' -%}
+{%- assign _locale_search = __return -%}
+
+{%- if site.search.provider == 'google' -%}
+  <script>window.useDefaultSearchBox = false;</script>
+{%- endif -%}
+
+{%- if site.search.provider -%}
+  <script>{%- include scripts/components/search.js -%}</script>
+{%- endif -%}
+
+{%- if site.search.provider == 'default' -%}
+  {%- include search-providers/default/search.html -%}
+{%- elsif site.search.provider == 'google' -%}
+  {%- include search-providers/google-custom-search-engine/search.html -%}
+{%- elsif site.search.provider == 'custom' -%}
+  {%- include search-providers/custom/search.html -%}
+{%- endif -%}
