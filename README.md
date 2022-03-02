@@ -1,71 +1,63 @@
-# jekyll-theme-persephone
+[Hux Blog](https://huangxuan.me)
+================================
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-theme-persephone.svg)](https://rubygems.org/gems/jekyll-theme-persephone)
+> I never expect this becomes popular.
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
+![](http://huangxuan.me/img/blog-desktop.jpg)
 
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
 
-[DEMO with full functions.](https://erl.im)
+[User Manual 👉](_doc/Manual.md)
+--------------------------------------------------
 
-[A simple blog demo](https://en.erl.im)
+### Getting Started
 
-## Demo
+1. You will need [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/) to use [Jekyll](https://jekyllrb.com/). Following [Using Jekyll with Bundler](https://jekyllrb.com/tutorials/using-jekyll-with-bundler/) to fullfill the enviromental requirement.
 
-| ![home layout](/screenshots/home.png) | ![blog layout](/screenshots/blog.png) |
-| -- | -- |
-| `layout: home` [Demo](https://en.erl.im/blog/) | `layout: blog` [Demo](https://en.erl.im/archive/) |
-| ![post layout](/screenshots/post.png) | ![page layout](/screenshots/page.png) |
-| `layout: post` [Demo](https://en.erl.im/blog/jekyll-theme-persephone.html) | `layout: page` [Demo](https://erl.im/about.html) |
-| ![archive layout](/screenshots/archive.png)      | ![slides layout](/screenshots/slides.png) |
-| `layout: archive` [Demo](https://erl.im/archive.html) | <strong style="color: red">*</strong> `layout: slides` [Demo](https://erl.im) |
-| ![book layout](/screenshots/book.png) | ![chapter layout](/screenshots/chapter.png) |
-| <strong style="color: red">*</strong> `layout: book` [Demo](https://erl.im/corner) | <strong style="color: red">*</strong> `layout: chapter` [Demo](https://erl.im/corner/1.html) |
+2. Installed dependencies in the `Gemfile`:
 
-The layout with red * relied on a jekyll books generator plugin: [`jekyll-books`](https://github.com/erlzhang/jekyll-books)
-
-## Installation
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "jekyll-theme-persephone"
+```sh
+$ bundle install 
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+3. Serve the website (`localhost:4000` by default):
 
-```yaml
-theme: jekyll-theme-persephone
+```sh
+$ bundle exec jekyll serve  # alternatively, npm start
 ```
 
-And then execute:
+### Development (Build From Source)
 
-    $ bundle
+To modify the theme, you will need [Grunt](https://gruntjs.com/). There are numbers of tasks you can find in the `Gruntfile.js`, includes minifing JavaScript, compiling `.less` to `.css`, adding banners to keep the Apache 2.0 license intact, watching for changes, etc. 
 
-Or install it yourself as:
+Yes, they were inherited and are extremely old-fashioned. There is no modularization and transpilation, etc.
 
-    $ gem install jekyll-theme-persephone
+Critical Jekyll-related code are located in `_include/` and `_layouts/`. Most of them are [Liquid](https://github.com/Shopify/liquid/wiki) templates.
 
-## Usage
+This theme uses the default code syntax highlighter of jekyll, [Rouge](http://rouge.jneen.net/), which is compatible with Pygments theme so just pick any pygments theme css (e.g. from [here](http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html) and replace the content of `highlight.less`.
 
-- [Settings](/_config.yml)
-- [Layouts](/docs/layouts.md)
-- [Comments](/docs/comments.md)
-- [`jekyll-books` generator](/docs/books.md)
 
-## Contributing
+### Interesting to know more? Checkout the [full user manual](_doc/Manual.md)!
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/erlzhang/jekyll-theme-persephone. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-## Development
+Other Resources
+---------------
 
-To set up your environment to develop this theme, run `bundle install`.
+Ports
+- [**Hexo**](https://github.com/Kaijun/hexo-theme-huxblog) by @kaijun
+- [**React-SSR**](https://github.com/LucasIcarus/huxpro.github.io/tree/ssr) by @LucasIcarus
 
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+[Starter/Boilerplate](https://github.com/huxpro/huxblog-boilerplate)
+- Out of date. Helps wanted for updating it on par with the main repo
 
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-persephone.gemspec` accordingly.
+Translation
+- [🇨🇳  中文文档（有点过时）](https://github.com/Huxpro/huxpro.github.io/blob/master/_doc/README.zh.md)
 
-## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+License
+-------
+
+Apache License 2.0.
+Copyright (c) 2015-present Huxpro
+
+Hux Blog is derived from [Clean Blog Jekyll Theme (MIT License)](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/)
+Copyright (c) 2013-2016 Blackrock Digital LLC.
