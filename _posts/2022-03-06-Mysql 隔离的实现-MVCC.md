@@ -34,7 +34,7 @@ redo log是InnoDB存储引擎所独有的，它让`MySQL`拥有了崩溃恢复�
 
 更新表数据的时候，也是如此，发现 `Buffer Pool` 里存在要更新的数据，就直接在 `Buffer Pool` 里更新。然后会把“在某个数据页上做了什么修改”记录到重做日志缓存（`redo log buffer`）里，接着刷盘到 `redo log` 文件里。
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306141819.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306141819.png)
 
 ##### 刷盘时机
 
@@ -48,7 +48,7 @@ redo log是InnoDB存储引擎所独有的，它让`MySQL`拥有了崩溃恢复�
 
 `innodb_flush_log_at_trx_commit` 参数默认为 1 ，也就是说当事务提交时会调用 `fsync` 对 redo log 进行刷盘。另外，`InnoDB` 存储引擎有一个后台线程，每隔`1` 秒，就会把 `redo log buffer` 中的内容写到文件系统缓存（`page cache`），然后调用 `fsync` 刷盘。
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306142312.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306142312.png)
 
 除了后台线程每秒`1`次的轮询操作，还有一种情况，当 `redo log buffer` 占用的空间即将达到 `innodb_log_buffer_size` 一半的时候，后台线程会主动刷盘。
 
@@ -62,7 +62,7 @@ redo log是InnoDB存储引擎所独有的，它让`MySQL`拥有了崩溃恢复�
 
 硬盘上存储的 `redo log` 日志文件不只一个，而是以一个**日志文件组**的形式出现的，每个的`redo`日志文件大小都是一样的。比如可以配置为一组`4`个文件，每个文件的大小是 `1GB`，整个 `redo log` 日志文件组可以记录`4G`的内容。它采用的是环形数组形式，从头开始写，写到末尾又回到头循环写。
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306143019.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306143019.png)
 
 在个**日志文件组**中还有两个重要的属性，分别是 write pos、checkpoint
 
@@ -101,7 +101,7 @@ write pos 和 checkpoint 之间的还空着的部分可以用来写入新的 red
 
 
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306144533.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306144533.png)
 
 #### undo log
 
@@ -142,7 +142,7 @@ repeatalbe-read（可重复读）：对同一字段的多次读取结果是一�
 
 serializable（可串行化）：所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，**该级别可以防止脏读、不可重复读以及幻读**。
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306150009.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306150009.png)
 
 #### MVCC实现方法
 
@@ -181,15 +181,15 @@ ReadView主要是用来做**可见性判断**，里面保存了 “当前对本�
 
 insert 数据
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306151329.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306151329.png)
 
 第一次修改数据
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306151420.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306151420.png)
 
 第二次修改数据
 
-![](https://gitee.com/wecouldwin/blog-imag/raw/master/img/20220306151438.png)
+![](https://raw.githubusercontent.com/Mingasd/PostImg/main/20220306151438.png)
 
 不同事务或者相同事务的对同一记录行的修改，会使该记录行的 `undo log` 成为一条链表，链首就是最新的记录，链尾就是最早的旧记录。
 
